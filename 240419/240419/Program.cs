@@ -1,47 +1,22 @@
-﻿// 24.04.19 코딩 규칙 연습
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!"); // 한줄 주석 : Ctrl + K + C 
-Console.WriteLine("Hello, World!"); // 한줄 주석 해제 : Ctrl + K + U
-Console.WriteLine("Hello, World!"); // 영역 주석 : Ctrl + Shift + / /**/
+﻿// 2. 자료형 연습
 
+// 변수 선언
+// 자료형 int, 변수명 number = 대입연산자 값(10)
+byte byteA = 0xFF;          // 정수형 값을 저장 8bit
+short shortA = 0xFF;        // 정수형 값을 저장 16bit
+int number = 10;            // 정수형 32bit
+float pi = 3.141592f;       // 실수형 값 저장 32bit
+double pi2 = 3.14159265359; // 실수형, 32bit
+char character = 'a';       // 문자형, 16bit
+string name = "Lee";        // 문자 가변형 , 여러가지 문자형 저장
+bool isMoving = false;      // 부울형, 8bit, true(1) / false(0)
 
-int countNumber = 0; // camelCase (네이밍규칙)
-int a = 10; // 나쁜 예시 주석을 최대한 안달아줘야 좋은 변수선언임
-int totalNumber = 10;
-bool isActive = true;
-
-// 함수 이름은 동사
-// 함수와 메서드의 차이
-// 함수(function) : 클래스 외에서 사용 시
-// 메서드(method) : 클래스 내부에서 사용 시
-void Move()
-{
-
-}
-
-void Rotate()
-{
-
-}
-void LoopSystem() // PascalCase (네이밍규칙)
-{
-    for (int i = 0; i < a; i++)
-    {
-        countNumber++;
-    }
-
-    for (int i = 0;i < totalNumber; i++)
-    {
-        countNumber++;
-    }
-}
-
-if (countNumber == 0)
-{
-
-    countNumber = 1;
-
-    LoopSystem();
-    
-}
-
+// 콘솔에 출력
+Console.WriteLine(number);  // 한줄복사 : ctrl + D
+Console.WriteLine(name);
+Console.WriteLine(byteA);   
+Console.WriteLine(shortA);
+Console.WriteLine(pi);
+Console.WriteLine(pi2);
+Console.WriteLine(character);
+Console.WriteLine(isMoving);
