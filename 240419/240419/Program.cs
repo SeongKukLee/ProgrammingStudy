@@ -1,4 +1,4 @@
-﻿// 24.04.19 공부내용
+﻿// 24.04.19 코딩 규칙 연습
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!"); // 한줄 주석 : Ctrl + K + C 
 Console.WriteLine("Hello, World!"); // 한줄 주석 해제 : Ctrl + K + U
