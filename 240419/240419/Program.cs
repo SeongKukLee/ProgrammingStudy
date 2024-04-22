@@ -1,107 +1,137 @@
-﻿// 4. 컬렉션 연습
-
-// 배열 : 고정형
-
-string[] names = { "이재형", "이죄형", "이제형" };
-
-// 리스트 : 가변형
-List<string> names2 = new List<string>()
-{
-    "이재형",
-    "이재형2",
-    "이재형3"
-};
-
-Console.WriteLine(names[0]);
-Console.WriteLine(names2[0]);
-names2.Add("이재힝"); // List는 인덱스 추가가 가능함
-Console.WriteLine(names2[3]);
-
-// 배열의 반복
-for(int i=0; i<names.Length; i++)
-{
-    Console.WriteLine(names[i]);
-}
-
-// 리스트의 반복
-for (int i=0; i<names.Length; i++)
-{
-    Console.WriteLine(names2[i]);
-}
-
-// 리스트에서 이름찾기
-int index = names2.BinarySearch("이재형");
-Console.WriteLine("이재형은" + index + "번째에 있다.");
-
-// 존재 여부 확인
-bool isExist = names2.Contains("이재형");
-if (isExist)
-{
-    Console.WriteLine("존재합니다.");
-}
-
-// 리스트를 정렬
-names2.Sort();
-for(int i =0; i < names2.Count; i++)
-{
-    Console.WriteLine(names2[i]);
-}
-
-
-// 딕셔너리: "example"(key), 5번째(value)
-Dictionary<string, int> dictionary = new Dictionary<string, int>();
-dictionary.Add("book", 0);
-dictionary.Add("computer", 1);
-dictionary.Add("mouse", 2);
-
-index = dictionary["mouse"];
-Console.WriteLine("mouse 는 " + index + "번째에 있습니다");
-bool isContaing = dictionary.ContainsKey("book");
-if(isContaing)
-    Console.WriteLine("book이 존재합니다"); // if 한줄이면 {} 안써도됌
-
-// 실습 2
-// 도서관에 가로 4칸, 세로 3층의 책꽂이가 있습니다.
-// (미리 책을 꽂아놓은 상태)
-// 1. 각 책꽂이에 책을 추가하고
-// 2. 특정 책의 이름을 입력받아 책의 위치를 출력하는 책꽂이 시스템을 만드세요.
-
-// 예시
-// 책의 이름을 입력하시오
-// __
-// 책의 위치는 (3,2)입니다.
-
-
+﻿// 5. 컬렉션 연습 2
 /*
-string[,] bookShelf =
+Stack<int> numbers = new Stack<int>();
+numbers.Push(10); // 값을 쌓아 올린다.
+numbers.Push(100); 
+numbers.Push(1000);
+
+
+foreach (int number in numbers)
 {
-    {"김씨", "이씨", "박씨", "정씨" },
-    {"장씨", "민씨", "홍씨", "주씨" },
-    {"황씨", "강씨", "소씨", "공씨" }
-};
+    Console.WriteLine(number);
+}
+
+Console.WriteLine("-----------");
+
+int value = numbers.Pop(); // 쌓아 올린 값을 순서대로 꺼낸다
+Console.WriteLine(value);
+
+value = numbers.Pop();  // 쌓아올린 값을 순서대로 꺼낸다
+Console.WriteLine(value);
+
+value = numbers.Pop();  // 쌓아올린 값을 순서대로 꺼낸다
+Console.WriteLine(value);
 */
 
+// 실습 1 . 작업 (파워포인트)을 되돌리기 상태로 만들어주는 예제
+// 특정 횟수만큼 파워포인트 각 작업 반복해서 넣고
+// (넣는 과정이 끝나면) 1번 입력(되돌리기 버튼)을 누를 경우
+// 되돌리기 작업과 현재 진행된 작업의 이름을 Stack에 쌓인 순서대로 출력
 
 
-Dictionary<string,string> lib = new Dictionary<string, string>();
-lib.Add("김씨", "0,0");
-lib.Add("이씨", "0,1");
-lib.Add("박씨", "0,2");
-lib.Add("정씨", "0,3");
-lib.Add("장씨", "1,0");
-lib.Add("민씨", "1,1");
-lib.Add("홍씨", "1,2");
-lib.Add("주씨", "1,3");
-lib.Add("황씨", "2,0");
-lib.Add("강씨", "2,1");
-lib.Add("소씨", "2,2");
-lib.Add("공씨", "2,3");
+/*Stack<string> jobs = new Stack<string>();
+Console.WriteLine("<Jobs List>");
+jobs.Push("1. 삽입 메뉴 클릭");
+jobs.Push("2. 표 아이콘 클릭");
+jobs.Push("3. 표 크기 설정 및 표 생성");
+jobs.Push("4. 0,0에 안녕하세요 입력");
+jobs.Push("5. 0,1에 반갑습니다 입력");
+jobs.Push("6. 저는 이성국 입니다. 입력");
+
+foreach(string job in jobs)
+{
+    Console.WriteLine(job);
+}
+for (int i = 0; i <= jobs.Count; i++)
+{
+
+    Console.WriteLine("--------------------------------------------");
+    Console.WriteLine("명령을 입력해주세요. 되돌리기(1)을 입력해 주세요");
+    string input = Console.ReadLine();
+
+    if (input == "1")
+    {
+        Console.WriteLine("아래 명령을 되돌렸습니다.");
+        Console.WriteLine(jobs.Peek());
+
+        jobs.Pop();
+        Console.WriteLine("<Jobs List>");
+        foreach (string job in jobs)
+        {
+            Console.WriteLine(job);
+        }
+    }
+}
 
 
-Console.WriteLine("책 이름을 입력하세요");
-string bookname = Console.ReadLine();
-string location = lib[bookname];
-Console.WriteLine("책의 위치는 : " + location + "입니다.");
 
 
 
+Queue<string> waitingPeople = new Queue<string>();
+waitingPeople.Enqueue("이성국");
+waitingPeople.Enqueue("이성국1");
+waitingPeople.Enqueue("이성국2");
+
+foreach(string people in waitingPeople)
+{
+Console.WriteLine(people);
+}
+
+string name = waitingPeople.Dequeue();
+Console.WriteLine(name);
+
+name = waitingPeople.Dequeue();
+Console.WriteLine(name);
+
+name = waitingPeople.Dequeue();
+Console.WriteLine(name);
+*/
+
+//Queue 연습
+
+/*
+ 실습2- Queue
+도서관 대출자 대기열
+1. 대출자 대기열에 맞춰 대출자의 이름과 도서의 이름을 대기열(Queue)에 등록
+2. 도서관 직원이 대기열에 맞춰 대출목록에 업데이트
+
+입출력예시
+"대출자 이름을 입력하라"
+이성국
+"도서 권수를 입력하라"
+2
+"대출을 위한 도서 목록을 입력하라"
+이재형
+"대출을 위한 도서 목록을 입력하라"
+이재형2
+
+Queue에 들어갈 내용 -> 이름 : 이성국 \n 도서1. 이재형 \n 도서2. 이재형2
+
+"도서가 등록 되었습니다."
+이름 : 이성국
+도서1. 이재형
+도서2. 이재형2
+*/
+
+Queue<string> libraryQueue = new Queue<string>();
+string totalInfo = "";
+
+Console.WriteLine("대출자 이름을 입력하시오");
+string name = Console.ReadLine();
+
+Console.WriteLine("도서 권 수 를 입력하시오");
+string bookNumber = Console.ReadLine();
+int count = int.Parse(bookNumber); // 숫자로 만듦
+
+totalInfo = name + "\n" + count + "\n";
+
+for(int i = 0; i < count; i++)
+{
+    Console.WriteLine("대출을 위한 도서 목록을 입력하시오");
+    string bookName = Console.ReadLine();
+    totalInfo += bookName + "\n";
+}
+
+Console.WriteLine("입력된 내용은 아래와 같습니다.");
+Console.WriteLine(totalInfo);
+libraryQueue.Enqueue(totalInfo); // 1번 작동하는

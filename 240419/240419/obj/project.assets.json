@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\제5강의실-25\\.nuget\\packages\\": {}
+    "C:\\Users\\이성국\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\제5강의실-25\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\240419.csproj",
+      "projectUniqueName": "C:\\Users\\이성국\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\240419.csproj",
       "projectName": "240419",
-      "projectPath": "C:\\Users\\제5강의실-25\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\240419.csproj",
-      "packagesPath": "C:\\Users\\제5강의실-25\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\제5강의실-25\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\obj\\",
+      "projectPath": "C:\\Users\\이성국\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\240419.csproj",
+      "packagesPath": "C:\\Users\\이성국\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\이성국\\Documents\\GitHub\\ProgrammingStudy\\240419\\240419\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\제5강의실-25\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\이성국\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "net8.0": {
@@ -40,11 +40,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
