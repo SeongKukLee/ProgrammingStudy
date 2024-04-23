@@ -1,197 +1,99 @@
-﻿// 10. 클래스
+﻿// 11. 클래스 메서드 연습
 
 
 
-using System.Reflection.Metadata.Ecma335;
+using System.ComponentModel;
 
 public class MainClass
 {
-    // Persdon Class Template
-    public class Person
+    public class Calculator
     {
-        // 필드 or 멤버 변수 or global variable
-        public string name;
-        public int age;
-        public int id;
+        float inputA = 0, inputB = 0;
 
-        //생성자 Constructor : 인스턴싱 시 필드 초기화 or 메서드 실행
-        public Person(string _name, int _age, int _id)
+        public float Add(float _inputA, float _inputB)
         {
-            name = _name;
-            age = _age;
-            id = _id;
-
-            Introduce();
+            return _inputA + _inputB;
         }
-
-        public Person()
+        public float Subtract(float _inputA, float _inputB)
         {
-            Introduce();
+            return _inputA - _inputB;
         }
-
-        // 함수 x -> 메서드 o
-        public void Introduce()
+        public float Multiply(float _inputA, float _inputB)
         {
-            // 지역변수, local variable
-            //int number = 10;
-            //number = 20;
-            //this.name = "이재형"; // 전역변수 name 사용
-            Console.WriteLine("저는 " + this.name + "입니다.");
-
-            //string name = "이성국";
-            //Console.WriteLine(name);
+            return _inputA * _inputB;
         }
-        public void Move()
+        public float Divide(float _inputA, float _inputB)
         {
-
+            return _inputA / _inputB;
         }
-
-
+        public float Sin(float _inputA)
+        {
+            return MathF.Sin(_inputA * float.Pi / 180);
+        }
+        public float Cos(float _inputA)
+        {
+            return MathF.Cos(_inputA * float.Pi / 180);
+        }
+        public float Tan(float _inputA)
+        {
+            return MathF.Tan(_inputA * float.Pi / 180);
+        }
     }
-
     public static void Main()
     {
-        Person person1 = new Person(); // Instancing, 인스턴스화, 객체화, 메모리 할당
-        // person1.name = "이성국"; // 변수의 초기화, Variable Initialization
-        // person1.Introduce();
+        // 실습 9. 공학용 계산기의 삼각함수 기능을 Calculator클래스의 메서드를 사용하여 만들어본다.
+        // 1. Calculator 클래스 만든다.
+        // 2. Calculator 안에 입출력을 위한 변수 선언
+        // 3. Calculator 클래스에 아래와 같은 메서드를 만든다.
+        // 메서드 명 : Add, Subtract, Multiply, Divide, Sin, Cos, Tan(MathF 클래스 참고)
+        Calculator calculator = new Calculator();
 
-        // 실습 5. 클래스 생성자를 사용하여 5명의 사람 클래스 인스턴싱
-        Person person2 = new Person("이생국", 30, 1);
-        Person person3 = new Person("이셩국", 40, 2);
-        Person person4 = new Person("이쉥국", 50, 3);
-        Person person5 = new Person("히성국", 20, 4);
-        Person person6 = new Person("위성국", 10, 5);
-
-        List<string> bookList = new List<string>();
-        List<Person> personList = new List<Person>();
-        // 실습 7. 아래의 내용으로 도서 클래스 만들고, 라이브러리 (Dictionary)에 도서 3권 저장
-        // 도서명, 저자, 출판사, 일련번호, 출판일, 도서관에서의 위치, 도서 대여여부 ...
-
-        Book book1 = new Book("다이슨 자서전", "0,1");
-        Book book2 = new Book("퓨쳐셀프", "0,2");
-        List<Book> books = new List<Book>();
-        books.Add(book1);
-        books.Add(book2);
-
-
-        bool isExist = books.Contains(new Book("다이슨 자서전", ""));
-        if (isExist)
+        Console.WriteLine("첫번째 숫자를 입력해주세요");
+        string inputA = Console.ReadLine();
+        float numberA = float.Parse(inputA);
+        float result = 0;
+        Console.WriteLine("연산자(+,-,*,/) 또는 삼각함수 기호(Sin,Cos,Tan)를 입력해주세요");
+        string oper = Console.ReadLine();
+        if (oper == "sin" || oper == "cos" || oper == "tan")
         {
-            Console.WriteLine("존재합니다");
-        }
-        Book bookFound = books.Find(x => x.name.Contains("퓨쳐셀프"));
-        Console.WriteLine(bookFound.location);
+            
 
-        // 실습8. 도서관에 책 등록 시스템 구성
-        List<Book> books2 = new List<Book>();
-        bool isRunning = true;
-        while (isRunning)
-        {
-            Console.WriteLine("책 등록하겠습니다");
-            int statusNumber = 7;
-            Book book = new Book();
-
-            for (int status = 0; status < statusNumber; status++)
+            switch (oper)
             {
-                string input = "";
-
-                switch (status)
-                {
-                    case 0:
-                        Console.WriteLine("책 이름을 입력해주세요");
-                        input = Console.ReadLine();
-                        book.name = input;
-                        break;
-                    case 1:
-                        Console.WriteLine("작가를 입력해주세요");
-                        input = Console.ReadLine();
-                        book.author = input;
-                        break;
-                    case 2:
-                        Console.WriteLine("출판사를 입력해주세요");
-                        input = Console.ReadLine();
-                        book.company = input;
-                        break;
-                    case 3:
-                        Console.WriteLine("일련번호를 입력해주세요");
-                        input = Console.ReadLine();
-                        book.serialNumber = int.Parse(input);
-                        break;
-                    case 4:
-                        Console.WriteLine("출판일을 입력해주세요");
-                        input = Console.ReadLine();
-                        book.publicationDate = DateTime.Now;
-                        break;
-                    case 5:
-                        Console.WriteLine("책의 위치를 입력해주세요");
-                        input = Console.ReadLine();
-                        book.location = input;
-                        break;
-                    case 6:
-                        Console.WriteLine("대여 상태를 입력해주세요");
-                        input = Console.ReadLine();
-                        bool isCheckedOut = book.isCheckedOut;
-                        break;
-                    case 10:
-                        isRunning = false;
-                        break;
-                }
+                case "sin":
+                    result = calculator.Sin(numberA);
+                break;
+                case "cos":
+                    result = calculator.Cos(numberA);
+                    break;
+                case "tan":
+                    result = calculator.Tan(numberA);
+                    break;
             }
-            book.ShowInformation();
-            book.ShowInformation(1, DateTime.Now);
-            string retuenValue = book.ShowInformation(4);
-            Console.WriteLine(retuenValue);
-
-
-            Console.WriteLine($"{book.name}, {book.author}, {book.company}, {book.publicationDate},{book.location},{book.isCheckedOut}");
-            books2.Add(book);
-            Console.WriteLine("책 등록이 완료되었습니다.");
+            Console.WriteLine("값 : "+ result);
+            return;
         }
-        // 도서의 이름을 입력하세요
-        // 삼국지
-        // 도서의 위치를 입력하세요
-        // 1, 5
-        // 1번 눌러서 도서 검색 (도서 이름 또는 위치 검색)
-        // 도서의 정보를 출력 (삼국지, 1,5)
+        
+        Console.WriteLine("두번째 숫자를 입력해주세요");
+        string inputB = Console.ReadLine();
+        float numberB = float.Parse(inputB);
+
+        switch (oper)
+        {
+            case "+":
+                result = calculator.Add(numberA, numberB);
+                break;
+            case "-":
+                result = calculator.Subtract(numberA, numberB);
+                break;
+            case "*":
+                result = calculator.Multiply(numberA, numberB);
+                break;
+            case "/":
+                result = calculator.Divide(numberA, numberB);
+                break;
+        }
+        Console.WriteLine("값 : " + result);
 
     }
-    public class Book
-    {
-        public string name;
-        public string author;
-        public string company;
-        public int serialNumber;
-        public DateTime publicationDate;
-        public string location;
-        public bool isCheckedOut;
-
-        public Book(string name, string location)
-        {
-            this.name = name;
-            this.location = location;
-
-        }
-        public Book()
-        {
-
-        }
-
-        public void ShowInformation()
-        {
-            Console.WriteLine($"{this.name}, {this.author}");
-        }
-
-        public void ShowInformation(int name, DateTime dateTime)
-        {
-            Console.WriteLine("리턴타입 없음");
-        }
-
-        public string ShowInformation(int name)
-        {
-            string result = "리턴타입 있음";
-
-            return result;
-        }
-    }
-
 }
